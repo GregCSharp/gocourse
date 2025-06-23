@@ -1,0 +1,68 @@
+package main
+
+import "fmt"
+
+func main() {
+
+}
+
+func whileFunction() {
+	// while statement using a for
+	i := 1
+	for i <= 5 {
+		fmt.Println("Iteration:", i)
+		i++
+	}
+
+	sum := 0
+	for {
+		sum += 10
+		fmt.Println("Sum:", sum)
+		if sum >= 50 {
+			break
+		}
+	}
+}
+
+func loopFunctions() {
+	//simple for loop
+	for i := 1; i <= 5; i++ {
+		fmt.Println(i)
+	}
+
+	// iteration over collection
+	numbers := []int{1, 2, 3, 4, 5, 6}
+	for index, value := range numbers {
+		fmt.Printf("Index: %d, Value: %d\n", index, value)
+	}
+
+	for i := 1; i <= 10; i++ {
+		if i%2 == 0 {
+			continue
+		}
+		fmt.Println("odd number: ", i)
+
+		if i == 5 {
+			break
+		}
+	}
+
+	rows := 5
+
+	// //outer loop
+	for i := 1; i <= rows; i++ {
+		// inner loop for spaces before stars
+		for j := 1; j <= rows-i; j++ {
+			fmt.Print(" ")
+		}
+		// inner loop for stars
+		for k := 1; k <= 2*i-1; k++ {
+			fmt.Print("*")
+		}
+		fmt.Println() // move to next line
+	}
+
+	for i := range 10 {
+		fmt.Println(i)
+	}
+}
