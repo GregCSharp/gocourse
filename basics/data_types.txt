@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+var name = "greg"
+
+func main() {
+	lastName := "B"
+	fmt.Println(lastName)
+
+	// i am a professional
+}
