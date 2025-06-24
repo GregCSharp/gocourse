@@ -1,0 +1,74 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	//var names [2]string
+	var numbers [5]int // by default it is initialized as 0, 0, 0, 0, 0, will print [0 0 0 0 0]
+	fmt.Println(numbers)
+	numbers[4] = 18
+	fmt.Println(numbers)
+	numbers[0] = 17
+	fmt.Println(numbers)
+
+	fruits := [4]string{"Apple", "Banana", "Pineapple", "Grapes"}
+	fmt.Println("Fruits array:", fruits)
+	fmt.Println("Third element:", fruits[2])
+
+	// originalArray := [3]int{1, 2, 3}
+	// copiedArray := originalArray
+	// copiedArray[0] = 100
+
+	// fmt.Println("Original Array:", originalArray)
+	// fmt.Println("Copied Array:", copiedArray)
+
+	for i := 0; i < len(numbers); i++ {
+		fmt.Println("Element at index", i, ":", numbers[i])
+	}
+
+	fmt.Println("The length of numbers array is", len(numbers))
+
+	for i, v := range numbers {
+		fmt.Printf("Index %d, Value %d\n", i, v)
+	}
+
+	for _, v := range numbers { //the index is not used
+		fmt.Printf("Value %d\n", v)
+	}
+
+	// underscore in go has different importances
+
+	a, _ := someFunction() //use underscore if we do no care about second value returned
+	fmt.Println(a)
+
+	b := 2
+	_ = b //b is used in an unused way but show what underscore can do
+
+	//comparing arrays
+	array1 := [3]int{1, 2, 3}
+	array2 := [3]int{10, 2, 3}
+	fmt.Println("Array1 = Array2?", array1 == array2)
+
+	//array of array
+	var matrix [3][3]int = [3][3]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+	fmt.Println(matrix)
+
+	//pointers
+
+	originalArray := [3]int{1, 2, 3}
+	var copiedArray *[3]int
+	copiedArray = &originalArray
+	copiedArray[0] = 100
+
+	fmt.Println("Original Array:", originalArray)
+	fmt.Println("Copied Array:", copiedArray)
+}
+
+func someFunction() (int, int) { //these a return values
+	return 1, 2
+}

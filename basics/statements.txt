@@ -1,0 +1,33 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	name := "Saul"
+	switch name {
+	case "Samuel":
+		fmt.Println("Prophet")
+		fallthrough //allow to run through the next case, very rare
+	case "David", "Saul", "Solomon":
+		fmt.Println("King")
+	default:
+		fmt.Println("no one")
+
+	}
+
+	age := 5
+	switch {
+	case age < 20:
+		fmt.Println("Rather young")
+		fallthrough
+	case age < 40:
+		fmt.Println("Adult")
+	case age < 60:
+		fmt.Println("Getting old")
+		fallthrough
+	default:
+		fmt.Println("Old")
+	}
+
+}

@@ -1,0 +1,45 @@
+package main
+
+import (
+	"fmt"
+	"maps"
+)
+
+func main() {
+
+	//var myMap map[string]int
+
+	myMap := make(map[string]int)
+	fmt.Println(myMap)
+
+	myMap["key1"] = 9
+	myMap["key2"] = 94
+	fmt.Println(myMap)
+	fmt.Println(myMap["key1"])
+	myMap["key1"] = 100000
+	fmt.Println(myMap["key1"])
+
+	delete(myMap, "key2")
+	fmt.Println(myMap)
+
+	clear(myMap)
+	fmt.Println(myMap)
+
+	myMap["key1"] = 9
+	myMap["key2"] = 94
+	value, unknownValue := myMap["key1"]
+	fmt.Println(value, unknownValue) //unknownValue indicates if there is a value associated with the key
+
+	myMap2 := map[string]int{"a": 1, "b": 3}
+	fmt.Println(myMap2)
+
+	if maps.Equal(myMap, myMap2) {
+		fmt.Println("maps are equal")
+	}
+
+	for k, v := range myMap2 {
+		fmt.Println(k, v)
+	}
+
+	// the 0 value of a map is nil
+}

@@ -1,0 +1,94 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func main() {
+
+	// sum := add(1, 2)
+	// fmt.Println(sum)
+
+	// fmt.Println(add(6, 2))
+
+	// greet := func() {
+	// 	fmt.Println("Hello anonymous function")
+	// }
+
+	// greet()
+
+	// operation := add
+
+	// result := operation(4, 10)
+	// fmt.Println(result)
+
+	result := applyOperation(5, 3, add)
+	fmt.Println("5 + 3 =", result)
+
+	multiplyBy2 := createMultiplier(2)
+	fmt.Println("6 * 2 =", multiplyBy2(6))
+
+	//MULTIPLE RETURN TYPES
+	q, r := divide(10, 3)
+	fmt.Println("Quotient = ", q, " Remainder =", r)
+
+	result2, err := compare(3, 3)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Result:", result2)
+	}
+
+	//Variadic functions
+	result3 := sum(5, 4, 7, 8, 9)
+	fmt.Println(result3)
+
+	numbers := []int{1, 2, 3, 4, 5}
+	result4 := sum(numbers...)
+	fmt.Println(result4)
+
+}
+
+func sum(nums ...int) (total int) {
+	total = 0
+	for _, num := range nums {
+		total += num
+	}
+	return
+}
+
+func compare(a, b int) (string, error) {
+	if a > b {
+		return "a greater than b", nil
+	} else if b > a {
+		return "b greater than a", nil
+	} else {
+		return "", errors.New("unable to compare")
+	}
+
+}
+
+func divide(a, b int) (quotient int, remainder int) {
+	quotient = a / b
+	remainder = a % b
+	return
+}
+
+func add(a, b int) int {
+	return a + b
+}
+
+func applyOperation(a, b int, operation func(int, int) int) int {
+	return operation(a, b)
+}
+
+// func operation(a, b int) int {
+// 	return a + b
+// }
+
+func createMultiplier(factor int) func(int) int {
+	return func(x int) int {
+		return x * factor
+	}
+}

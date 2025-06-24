@@ -1,0 +1,61 @@
+package main
+
+import (
+	"fmt"
+	"slices"
+)
+
+func main() {
+
+	//	var sliceName[]ElementType
+
+	var numbers []int
+	_ = numbers
+
+	// numbers1 = []int{1, 2, 3}
+	// numbers2 := []int{1, 4, 7}
+
+	slice := make([]int, 5) //creates an empty slice of 5 space
+
+	a := [5]int{1, 2, 3, 4, 5}
+	slice = a[1:4]
+	fmt.Println(slice)
+
+	slice = append(slice, 101, 102)
+	fmt.Println("Slice:", slice)
+
+	sliceCopy := make([]int, len(slice))
+	copy(sliceCopy, slice)
+	fmt.Println("SliceCopy:", sliceCopy)
+
+	//var nilSlice []int
+
+	for i, v := range slice {
+		fmt.Println(i, v)
+	}
+	fmt.Println("Index 3 of slice:", slice[3])
+	//slice[3] = 50
+	fmt.Println("Index 3 of slice is now ", slice[3])
+
+	if slices.Equal(slice, sliceCopy) {
+		fmt.Println("Slices are equal")
+	} else {
+		fmt.Println("Slices are not equal")
+	}
+
+	twoD := make([][]int, 3)
+
+	for i := 0; i < 3; i++ {
+		innerLen := i + 1
+		twoD[i] = make([]int, innerLen)
+		for j := 0; j < innerLen; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println(twoD)
+
+	sliceCut := slice[2:4]
+	fmt.Println("SliceCut:", sliceCut)
+	fmt.Println("The capacity of sliceCut is", cap(sliceCut))
+	fmt.Println("The capacity of sliceCut is", len(sliceCut))
+}
