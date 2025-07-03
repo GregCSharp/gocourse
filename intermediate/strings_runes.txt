@@ -1,0 +1,60 @@
+package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
+)
+
+func main() {
+
+	message1 := "Hello \ngo"
+	message2 := "Hello \tgo"
+	message3 := "Hello \rgo" //writes Hello then goes to the beginning of line and start writing go over hello
+	rawMessage := `Hello\nGo`
+
+	fmt.Println(message1)
+	fmt.Println(message2)
+	fmt.Println(message3)
+	fmt.Println(rawMessage)
+
+	fmt.Println("Length of message is ", len(message1)) // \n is counted as 1 character
+
+	fmt.Println("Message[0] is hte first character: ", message1[0]) //ASCII
+
+	greeting := "Hello" //strings are immutable, we cannot add later like greeting += " Gregory", or there is no Append method
+	name := "Gregory"
+	fmt.Println(greeting + " " + name)
+
+	//comparisons
+	//based on ascii values
+	str1 := "GregW"
+	str2 := "GregB"
+	fmt.Println(str1 > str2) // uppercase have a lower value than uppder case - compares ASCII values
+
+	//string iterations
+	for _, char := range message1 {
+		//fmt.Printf("character at index %d is %c\n", i, char)
+		fmt.Printf("%v\n", char)
+	}
+
+	fmt.Println("Ruin count:", utf8.RuneCountInString(greeting))
+
+	//runes
+	var ch rune = 'a'
+	ee := 'ç'
+
+	fmt.Println(ch, ee)
+	fmt.Printf("%c %c\n", ch, ee)
+
+	cstr := string(ee)
+	fmt.Println((cstr))
+	fmt.Printf("Type of cstr is %T\n", cstr)
+
+	number := 1234567.89
+	p := message.NewPrinter(language.English) // Or other languages like language.German
+	formattedNumber := p.Sprintf("%f", number)
+	fmt.Println(formattedNumber)
+}
